@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import os
+import subprocess
 
 '''
 Pipelines: Demonstration (2)
@@ -18,4 +19,5 @@ for line in os.popen('ps aux'):
 print(len(users))
 
 # Pipeline Solution
-os.system("ps aux | awk '{print $1}' | sort | uniq | wc -l")
+
+subprocess.run("ps aux | awk '{print $1}' | sort | uniq | wc -l", shell=True)

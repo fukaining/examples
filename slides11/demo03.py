@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import os
+import subprocess
 
 '''
 Pipelines: Demonstration (3)
@@ -23,4 +24,5 @@ for user, count in counts.items():
 print(max_user)
 
 # Pipeline Solution
-os.system("ps aux | awk '{print $1}' | sort | uniq -c | sort -rn | head -n 1 | awk '{print $2}'")
+
+subprocess.run("ps aux | awk '{print $1}' | sort | uniq -c | sort -rn | head -n 1 | awk '{print $2}'", shell=True)

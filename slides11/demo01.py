@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import os
+import subprocess
 
 '''
 Pipelines: Demonstration (1)
@@ -18,4 +19,5 @@ for line in os.popen('ps aux'):
 print(count)
 
 # Pipeline Solution
-os.system('ps aux | grep -v grep | grep bash | wc -l')
+
+subprocess.run('ps aux | grep -v grep | grep bash | wc -l', shell=True)
