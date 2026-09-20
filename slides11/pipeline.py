@@ -2,11 +2,12 @@
 
 import os
 
-os.system('ps aux | wc -l')
+os.system('ps aux | grep pbui | wc -l')
 
-import subprocess
+from subprocess import Popen, PIPE, DEVNULL, run
 
-ps = subprocess.Popen(['ps', 'aux'], stdout=subprocess.PIPE)
-wc = subprocess.run(['wc', '-l'], stdin=ps.stdout, stdout=subprocess.PIPE)
+ps   = Popen(['ps', 'aux'], stdout=PIPE, stderr=DEVNULL)
+grep = Popen(['grep', 'pbui'], stdin=ps.stdout, stdout=PIPE)
+wc   = run(['wc', '-l'], stdin=grep.stdout, stdout=PIPE)
 
 print(wc.stdout.decode(), end='')
